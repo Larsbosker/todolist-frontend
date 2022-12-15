@@ -1,0 +1,46 @@
+table {
+  display: table;
+  border-collapse: collapse;
+
+  th, td {
+    padding: .6vw 1vw .6vw 1vw;
+  }
+
+  thead {
+    th {
+      font-size: 1.7vw;
+      font-weight: 600;
+    }
+  }
+
+  tbody {
+    tr {
+      cursor: pointer;
+
+      td {
+        font-size: 1vw;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        max-width: 14vw;
+
+        &:first-child {
+          border-radius: 25px 0 0 25px;
+        }
+
+        &:last-child {
+          border-radius: 0 25px 25px 0;
+        }
+      }
+
+      &:hover {
+        background-color: #626262;
+      }
+    }
+  }
+
+  th:first-child, td:first-child {
+    min-width: 20vw;
+    max-width: 20vw;
+  }
+}

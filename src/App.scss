@@ -1,0 +1,13 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+// import pages styles
+@import "assets/styles/homepage";
+@import "assets/styles/todoitempage";
+
+// import components styles
+@import "assets/styles/table";
+@import "assets/styles/header";
