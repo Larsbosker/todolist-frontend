@@ -3,7 +3,7 @@ export interface ITodoData {
     title: string,
     description: string,
     image: string | null,
-    completed: boolean,
+    completed: number,
     createdAt: string,
     updatedAt: string,
 }

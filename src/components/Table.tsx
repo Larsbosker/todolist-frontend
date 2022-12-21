@@ -14,7 +14,7 @@ function Table(props: IProps) {
         <TableRow key={id} data={todoItem}/>
     ))
 
-    return (
+    return props.data.length === 0 ? <h1>Er zijn momenteel geen todo-items. Voeg er een toe!</h1> : (
         <table>
             <thead>
             <tr>{headValues.map((value: string, id: number) => <th key={id}>{value}</th>)}</tr>
@@ -23,7 +23,7 @@ function Table(props: IProps) {
             {tableRow}
             </tbody>
         </table>
-    );
+    )
 }
 
 export default Table;

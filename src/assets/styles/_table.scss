@@ -1,6 +1,7 @@
 table {
   display: table;
   border-collapse: collapse;
+  margin-bottom: 10vh;
 
   th, td {
     padding: .6vw 1vw .6vw 1vw;
@@ -40,7 +41,7 @@ table {
   }
 
   th:first-child, td:first-child {
-    min-width: 20vw;
-    max-width: 20vw;
+    min-width: 18vw;
+    max-width: 18vw;
   }
 }
