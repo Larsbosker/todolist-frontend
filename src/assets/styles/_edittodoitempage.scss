@@ -106,9 +106,9 @@
       padding: .7vw;
       border-radius: 10rem;
       font-size: 1vw;
-      margin-top: 3vh;
       cursor: pointer;
       transition: .3s;
+      margin: 3vh 0 10vh;
 
       &:hover {
         background: lighten(#E24153, 10%);

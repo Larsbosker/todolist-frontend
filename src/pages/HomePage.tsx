@@ -9,7 +9,7 @@ function HomePage() {
     const [data, setData] = useState<ITodoData[]>(Object);
     const fData = new FormData();
 
-    // Data that will be sent to API
+    // Data that will be sent to the API
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [completed, setCompleted] = useState(false);
@@ -42,7 +42,9 @@ function HomePage() {
         []
     )
 
-
+    /**
+     * Function for adding the data that will be sent to fData and calling the postData method
+     */
     function submitFunction() {
         fData.append("title", title)
         fData.append("description", description)
@@ -56,12 +58,12 @@ function HomePage() {
             <div className="add-todo">
                 <h1>Todo toevoegen</h1>
                 <form onSubmit={submitFunction}>
-                    <input id={"title"} type="text" placeholder={"Titel"} onChange={event => setTitle(event.target.value)}/>
+                    <input id={"title"} type={"text"} placeholder={"Titel"} onChange={event => setTitle(event.target.value)}/>
                     <textarea id={"description"} placeholder={"Beschrijving"} onChange={event => setDescription(event.target.value)}/>
-                    <input id={"image"} type="file" accept="image/png, image/jpg, image/jpeg" onChange={(event: any) => setImage(event.target.files[0])}/>
+                    <input id={"image"} type={"file"} accept={"image/png, image/jpg, image/jpeg"} onChange={(event: any) => setImage(event.target.files[0])}/>
                     <div className={"completed"}>
                         <label htmlFor={"completed"}>Voltooid</label>
-                        <input id={"completed"} type="checkbox" onChange={event => setCompleted(!completed)}/>
+                        <input id={"completed"} type={"checkbox"} onChange={() => setCompleted(!completed)}/>
                     </div>
                     <button type={"submit"}>Opslaan</button>
                 </form>

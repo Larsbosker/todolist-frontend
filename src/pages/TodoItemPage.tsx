@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import axios from "axios";
+import axios, {AxiosResponse} from "axios";
 import {ITodoData} from "../services/ITodoData";
 import {useNavigate} from "react-router-dom";
 
@@ -8,21 +8,27 @@ function TodoItemPage() {
     const todoItemId = window.location.pathname.split('/')[2];
     const navigate = useNavigate();
 
-    const RequestTodoData = () => {
+    /**
+     * Function for getting a todo-item with specific id
+     * @constructor
+     */
+    function RequestTodoData() {
         axios.get(`http://127.0.0.1:8000/api/todolist/${todoItemId}`)
             .then(res => {
                 setData(res.data['data']);
             })
     }
 
-    const DeleteTodo = () => {
+    /**
+     * Function for sending a delete request for a todo-item to api
+     * @constructor
+     */
+    function DeleteTodo() {
         axios.delete(`http://127.0.0.1:8000/api/todolist/${todoItemId}`)
-            .then(function (res) {
+            .then(function (res: AxiosResponse<any>) {
                 navigate("/")
             })
     }
-
-    console.log(`http://127.0.0.1:8000/${data.image}`)
 
     useEffect(
         RequestTodoData,
@@ -40,12 +46,15 @@ function TodoItemPage() {
                 second: "2-digit"
             })}</h5>
             <h1 className={"title"}>{data.title}</h1><br/>
+
             <h3 className={"image-info"}>Beschrijving:</h3>
             <h4>{data.description}</h4><br/>
+
             {data.image ? <>
                 <h3 className={"image-info"}>Afbeelding:</h3>
-                <img src={`http://127.0.0.1:8000/${data.image}`}/><br/>
+                <img src={`http://127.0.0.1:8000/${data.image}`} alt={"todo-image"}/><br/>
             </> : null}
+
             <h3 className={"completed-info"}>Voltooid:</h3>
             <h4>{data.completed ? "Ja" : "Nee"}</h4>
 
