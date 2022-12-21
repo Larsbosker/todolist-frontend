@@ -51,7 +51,7 @@ function HomePage() {
                 <form onSubmit={submitFunction}>
                     <input id={"title"} type="text" placeholder={"Titel"} onChange={event => setTitle(event.target.value)}/>
                     <textarea id={"description"} placeholder={"Beschrijving"} onChange={event => setDescription(event.target.value)}/>
-                    <input id={"image"} type="file" onChange={(event: any) => setImage(event.target.files[0])}/>
+                    <input id={"image"} type="file" accept="image/png, image/jpg, image/jpeg" onChange={(event: any) => setImage(event.target.files[0])}/>
                     <div className={"completed"}>
                         <label htmlFor={"completed"}>Voltooid</label>
                         <input id={"completed"} type="checkbox" onChange={event => setCompleted(!completed)}/>

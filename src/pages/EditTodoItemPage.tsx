@@ -30,7 +30,7 @@ function EditTodoItemPage() {
      * Function for updating data of todo item
      */
     function updateData() {
-        axios.put(`http://127.0.0.1:8000/api/todolist/${todoItemId}`, fData, config)
+        axios.patch(`http://127.0.0.1:8000/api/todolist/${todoItemId}`, fData, config)
             .catch(function (res) {
                 console.log(res)
             })
@@ -50,7 +50,8 @@ function EditTodoItemPage() {
         fData.append("title", title === undefined ? data.title : title)
         fData.append("description", description === undefined ? data.description : description)
         fData.append("completed", JSON.stringify(completed))
-        fData.append("image", image ? image : "no-image")
+        if (image) fData.append("image", image);
+        console.log(Object.fromEntries(fData))
         updateData();
         navigate('/')
     }
@@ -61,7 +62,11 @@ function EditTodoItemPage() {
             <form onSubmit={submitFunction}>
                 <input id={"title"} type="text" defaultValue={data.title} onChange={event => setTitle(event.target.value)}/>
                 <textarea id={"description"} defaultValue={data.description} onChange={event => setDescription(event.target.value)}/>
-                <input id={"image"} type="file" onChange={event => setImage(event.target.value)}/>
+                {data.image ? <>
+                    <h3 className={"image-info"}>Afbeelding:</h3>
+                    <img src={`http://127.0.0.1:8000/${data.image}`}/><br/>
+                </> : null}
+                <input id={"image"} type="file" accept="image/png, image/jpg, image/jpeg" onChange={(event: any) => setImage(event.target.files[0])}/>
                 {data.completed !== undefined ? (
                     <div className={"completed"}>
                         <label htmlFor={"completed"}>Voltooid</label>
