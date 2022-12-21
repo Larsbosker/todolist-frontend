@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import Table from "../components/Table";
 import {ITodoData} from "../services/ITodoData";
-import Spinner from "../components/Spinner";
 
 function HomePage() {
     const config = {headers: {'Content-type': "multipart/form-data"}};
@@ -11,7 +10,7 @@ function HomePage() {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [completed, setCompleted] = useState(false);
-    const [image, setImage] = useState("no image");
+    const [image, setImage] = useState("");
     const url: string = "http://127.0.0.1:8000/api/todolist";
 
     const RequestTodoData = () => {
@@ -37,11 +36,11 @@ function HomePage() {
     )
 
     const submitFunction = (e: any) => {
+        // e.preventDefault();
         fData.append("title", title)
         fData.append("description", description)
         fData.append("completed", JSON.stringify(completed))
-        fData.append("image", image)
-        console.log(Object.fromEntries(fData))
+        if (image) fData.append("image", image)
         postData(url);
     }
 
@@ -52,7 +51,7 @@ function HomePage() {
                 <form onSubmit={submitFunction}>
                     <input id={"title"} type="text" placeholder={"Titel"} onChange={event => setTitle(event.target.value)}/>
                     <textarea id={"description"} placeholder={"Beschrijving"} onChange={event => setDescription(event.target.value)}/>
-                    <input id={"image"} type="file" onChange={event => setImage(event.target.value)}/>
+                    <input id={"image"} type="file" onChange={(event: any) => setImage(event.target.files[0])}/>
                     <div className={"completed"}>
                         <label htmlFor={"completed"}>Voltooid</label>
                         <input id={"completed"} type="checkbox" onChange={event => setCompleted(!completed)}/>

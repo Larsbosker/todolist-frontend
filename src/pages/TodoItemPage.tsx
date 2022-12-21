@@ -22,6 +22,8 @@ function TodoItemPage() {
             })
     }
 
+    console.log(`http://127.0.0.1:8000/${data.image}`)
+
     useEffect(
         RequestTodoData,
         [todoItemId]
@@ -38,10 +40,11 @@ function TodoItemPage() {
                 second: "2-digit"
             })}</h5>
             <h1 className={"title"}>{data.title}</h1><br/>
+            <h3 className={"image-info"}>Beschrijving:</h3>
             <h4>{data.description}</h4><br/>
             {data.image ? <>
                 <h3 className={"image-info"}>Afbeelding:</h3>
-                <h4>{data.image}</h4><br/>
+                <img src={`http://127.0.0.1:8000/${data.image}`}/><br/>
             </> : null}
             <h3 className={"completed-info"}>Voltooid:</h3>
             <h4>{data.completed ? "Ja" : "Nee"}</h4>
