@@ -6,10 +6,17 @@ interface IProps {
     data: ITodoData[]
 }
 
+/**
+ * Functional component for displaying a table
+ * @param props
+ * @constructor
+ */
 function Table(props: IProps) {
     const headValues: string[] = ["Titel", "Voltooid", "Gemaakt op"]
 
-
+    /**
+     * For each todo-item create a tablerow
+     */
     const tableRow = props.data.map((todoItem: ITodoData, id: number) => (
         <TableRow key={id} data={todoItem}/>
     ))

@@ -1,15 +1,19 @@
 import React from 'react';
 import {ITodoData} from "../services/ITodoData";
 import {useNavigate} from "react-router-dom";
-import axios from "axios";
 
 interface IProps {
     data: ITodoData,
 }
 
+/**
+ * Functional component for displaying todo-item in a table-row
+ * @param props: IProps
+ * @constructor
+ */
 function TableRow(props: IProps) {
     let navigate = useNavigate();
-
+    
     function navigateTodoItemPage() {
         navigate(`/todo-item/${props.data.id}`)
     }

@@ -5,11 +5,10 @@
 }
 
 // import pages styles
-@import "assets/styles/homepage";
-@import "assets/styles/todoitempage";
-@import "assets/styles/edittodoitempage";
+@import "assets/styles/pages/homepage";
+@import "assets/styles/pages/todoitempage";
+@import "assets/styles/pages/edittodoitempage";
 
 // import components styles
-@import "assets/styles/table";
-@import "assets/styles/header";
-@import "assets/styles/spinner";
+@import "assets/styles/components/table";
+@import "assets/styles/components/header";

@@ -70,7 +70,7 @@ function EditTodoItemPage() {
                 {/* Image */}
                 {data.image ? <>
                     <h3 className={"image-info"}>Afbeelding:</h3>
-                    <img src={`http://127.0.0.1:8000/${data.image}`} alt={"todo-image"}/><br/>
+                    <img src={`http://127.0.0.1:8000/${data.image}`} alt={"todo"}/><br/>
                 </> : null}
 
                 {/* Image input */}

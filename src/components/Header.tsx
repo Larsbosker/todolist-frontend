@@ -1,5 +1,9 @@
 import React from 'react';
 
+/**
+ * Functional component for displaying the title of the application
+ * @constructor
+ */
 function Header() {
     return (
         <div className="header">
